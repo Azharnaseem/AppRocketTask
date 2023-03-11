@@ -6,12 +6,12 @@ import { Button, Input, ScreenWrapper } from "~components";
 import { setIsLoggedIn, setUserMeta } from "~redux/slices/user";
 import { setAppLoader } from "~redux/slices/config";
 import { erroMessage } from "~utills/Methods";
-export default function Login({ navigation, route }) {
+export default function SignUp({ navigation, route }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const passRef = useRef();
-  const onSubmitLogin = () => {
+  const onSubmitSignUp = () => {
     if (name == "") {
       erroMessage("Please enter email");
       return;
@@ -32,6 +32,7 @@ export default function Login({ navigation, route }) {
           dispatch(setAppLoader(false));
         }, 600);
       } catch (error) {
+        dispatch(setAppLoader(false));
         erroMessage("SomeThings Failed");
       }
     }
@@ -39,7 +40,7 @@ export default function Login({ navigation, route }) {
   return (
     <ScreenWrapper>
       <View style={styles.mainViewContainer}>
-        <Text style={styles.title}>Login</Text>
+        <Text style={styles.title}>Sign Up</Text>
         <View style={styles.inputContainer}>
           <Input
             placeholder={"User Name"}
@@ -59,8 +60,8 @@ export default function Login({ navigation, route }) {
             secureTextEntry={true}
           />
           <Button
-            title={"Login"}
-            onPress={() => onSubmitLogin()}
+            title={"Sign me Up!"}
+            onPress={() => onSubmitSignUp()}
             containerStyle={styles.btnStyle}
           />
         </View>

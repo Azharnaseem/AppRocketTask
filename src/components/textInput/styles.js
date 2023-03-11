@@ -1,23 +1,23 @@
 import { StyleSheet } from "react-native";
 import AppColors from "~utills/AppColors";
 import { height, width } from "~utills/Dimension";
-
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: width(2),
-    backgroundColor: AppColors.white,
-    borderWidth: width(0.5),
-    width: width(70),
+    height: height(6),
+    width: width(80),
     alignSelf: "center",
-    paddingVertical: height(1.8),
+    paddingHorizontal: width(4),
+    borderWidth: width(0.5),
   },
 
-  text: {
-    color: AppColors.black,
+  textInputView: {
+    alignItems: "flex-start",
+    justifyContent: "center",
+  },
+  input: {
     fontSize: width(3.8),
-    fontWeight: "bold",
+    color: AppColors.black,
+    height: height(6),
   },
 });
 export default styles;

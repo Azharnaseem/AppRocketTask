@@ -1,23 +1,19 @@
 import { StyleSheet } from "react-native";
-import AppColors from "~utills/AppColors";
 import { height, width } from "~utills/Dimension";
+import AppColors from "../../../utills/AppColors";
 
 const styles = StyleSheet.create({
-  container: {
+  mainViewContainer: {
+    flex: 1,
+    backgroundColor: AppColors.white,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: width(2),
-    backgroundColor: AppColors.white,
-    borderWidth: width(0.5),
-    width: width(70),
-    alignSelf: "center",
-    paddingVertical: height(1.8),
   },
-
-  text: {
+  title: {
     color: AppColors.black,
-    fontSize: width(3.8),
     fontWeight: "bold",
+    fontSize: width(4),
+    marginBottom: height(2),
   },
 });
 export default styles;
