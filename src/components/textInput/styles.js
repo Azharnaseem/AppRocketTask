@@ -9,15 +9,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: width(4),
     borderWidth: width(0.5),
   },
-
   textInputView: {
     alignItems: "flex-start",
-    justifyContent: "center",
+    // justifyContent: "spa",
+    // backgroundColor: "green",
   },
   input: {
     fontSize: width(3.8),
     color: AppColors.black,
     height: height(6),
+    // backgroundColor: "red",
+    width: width(70),
   },
 });
 export default styles;

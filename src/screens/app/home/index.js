@@ -1,21 +1,40 @@
-import React from "react";
+import dayjs from "dayjs";
+import React, { useState, useEffect } from "react";
 import { View, Text, Pressable } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
 import SVGIcon from "~assets/svg";
-import { Button, ScreenWrapper } from "~components";
-import { setAppLoader } from "~redux/slices/config";
-import { selectUserMeta, setIsLoggedIn, setUserMeta } from "~redux/slices/user";
+import { ScreenWrapper } from "~components";
+
+import ScreenNames from "~routes/routes";
 import CommonStyles from "~utills/CommonStyles";
 import styles from "./styles";
 export default function Home({ navigation, route }) {
-  const dispatch = useDispatch();
-  const userInfo = useSelector(selectUserMeta);
+  const [weatherData, setWeatherData] = useState(null);
+  const [temperature, setTemperature] = useState();
+  const API_KEY = "b0311bc7a7421d3be0c1fd3e79118bce";
+  const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${31.582045}&lon=${74.329376}&appid=${API_KEY}`;
+  useEffect(() => {
+    fetch(API_URL)
+      .then((response) => response.json())
+      .then((data) => setWeatherData(data))
+      .catch((error) => console.error(error));
+    tempChange();
+  }, []);
+  const tempChange = () => {
+    let Celsius = weatherData?.main?.temp - 273.15;
+    // console.log("=========================", parseInt(Celsius));
+    setTemperature(parseInt(Celsius));
+  };
+  // console.log("=========================", weatherData);
   return (
     <ScreenWrapper>
       <View style={styles.mainViewContainer}>
         <View style={styles.timeAndDateContainer}>
-          <Text style={styles.timeText}>7:51 PM</Text>
-          <Text style={styles.dateText}>janurary 1st, 2022</Text>
+          <Text style={styles.timeText}>
+            {dayjs(new Date()).format("h:mm A")}
+          </Text>
+          <Text style={styles.dateText}>
+            {dayjs(new Date()).format(" MMMM DD, YYYY")}
+          </Text>
           <View style={styles.calendarViewCon}>
             <SVGIcon.calender />
             <View>
@@ -27,7 +46,7 @@ export default function Home({ navigation, route }) {
         <View style={styles.timeAndDateContainer}>
           <SVGIcon.cloud />
           <Text style={styles.tempText}>
-            7:51 PM <SVGIcon.Refresh />
+            {temperature} °C <SVGIcon.Refresh />
           </Text>
           <View style={CommonStyles.rowJustifySpaceBtw}>
             <SVGIcon.MapMarker />
@@ -43,26 +62,13 @@ export default function Home({ navigation, route }) {
               rha hun
             </Text>
           </View>
-          <Text style={styles.viewInboxText}>View Inbox</Text>
-
-          {/* <Pressable> */}
-          {/* <Text style={styles.viewInboxText}>View Inbox</Text> */}
-          {/* </Pressable> */}
+          <Pressable
+            style={{ alignSelf: "flex-end" }}
+            onPress={() => navigation.navigate(ScreenNames.SEARCHSCREEN)}
+          >
+            <Text style={styles.viewInboxText}>View Inbox</Text>
+          </Pressable>
         </View>
-        {/* <Text style={styles.title}>{userInfo?.name}</Text> */}
-        {/* <Text style={styles.title}>{userInfo?.email}</Text> */}
-
-        {/* <Button
-          title={"Logout"}
-          onPress={() => {
-            dispatch(setAppLoader(true));
-            setTimeout(() => {
-              dispatch(setUserMeta(null));
-              dispatch(setIsLoggedIn(false));
-              dispatch(setAppLoader(false));
-            }, 600);
-          }}
-        /> */}
       </View>
     </ScreenWrapper>
   );

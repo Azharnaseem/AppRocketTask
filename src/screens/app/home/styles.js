@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   timeAndDateContainer: {
     width: width(98),
-    paddingVertical: height(4),
+    paddingVertical: height(6),
     alignItems: "center",
     justifyContent: "center",
     borderColor: AppColors.black,
@@ -56,12 +56,9 @@ const styles = StyleSheet.create({
     paddingLeft: width(4),
   },
   viewInboxText: {
-    color: AppColors.black,
-    alignSelf: "flex-end",
     paddingRight: width(4),
     fontWeight: "bold",
     fontSize: width(4),
-
     color: AppColors.blue,
     textDecorationLine: "underline",
   },

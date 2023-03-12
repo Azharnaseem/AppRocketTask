@@ -3,5 +3,8 @@ const ScreenNames = {
   LOGIN: "Login",
   HOME: "Home",
   SIGNUP: "SignUp",
+  CHAT: "Chat",
+  SEARCHSCREEN: "SearchScreen",
+  CREATEGROUP: "CreateGroup",
 };
 export default ScreenNames;

@@ -15,7 +15,7 @@ const CommonStyles = StyleSheet.create({
     marginLeft: width(4),
   },
   marginLeft_5: {
-    marginLeft: width(5),
+    marginLeft: width(8),
   },
   marginRight_1: {
     marginRight: width(1),
@@ -75,7 +75,7 @@ const CommonStyles = StyleSheet.create({
     paddingLeft: width(4),
   },
   paddingLeft_5: {
-    paddingLeft: width(5),
+    paddingLeft: width(8),
   },
   paddingRight_1: {
     paddingRight: width(1),

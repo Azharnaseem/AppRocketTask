@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { Login, SignUp, StartScreen } from "~screens/auth";
 import { Loader } from "~components";
 import ScreenNames from "./routes";
-import { HomeScreen } from "~screens/app";
+import { Chat, CreateGroup, HomeScreen, SearchScreen } from "~screens/app";
 import { selectIsLoggedIn } from "~redux/slices/user";
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +32,15 @@ export default function Routes() {
           screenOptions={{ header: () => false }}
         >
           <Stack.Screen name={ScreenNames.HOME} component={HomeScreen} />
+          <Stack.Screen name={ScreenNames.CHAT} component={Chat} />
+          <Stack.Screen
+            name={ScreenNames.CREATEGROUP}
+            component={CreateGroup}
+          />
+          <Stack.Screen
+            name={ScreenNames.SEARCHSCREEN}
+            component={SearchScreen}
+          />
         </Stack.Navigator>
       )}
     </NavigationContainer>

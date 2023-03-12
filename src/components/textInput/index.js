@@ -1,5 +1,6 @@
 import React, { forwardRef } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import SVGIcon from "~assets/svg";
 import AppColors from "~utills/AppColors";
 import styles from "./styles";
 
@@ -20,13 +21,16 @@ const Input = (
     value,
     onSubmitEditing,
     placeholderTextColor = AppColors.black,
+    showIcon = false,
+    textInputCon,
   },
   ref
 ) => {
   return (
     <View>
       <View style={[styles.container, textinputViewStyle]}>
-        <View style={styles.textInputView}>
+        <View style={[styles.textInputView, textInputCon]}>
+          {showIcon && <SVGIcon.search />}
           <TextInput
             placeholder={placeholder}
             onChangeText={onChangeText}
