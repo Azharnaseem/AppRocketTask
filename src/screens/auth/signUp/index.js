@@ -13,7 +13,7 @@ export default function SignUp({ navigation, route }) {
   const passRef = useRef();
   const onSubmitSignUp = () => {
     if (name == "") {
-      erroMessage("Please enter email");
+      erroMessage("Please enter user Name");
       return;
     } else if (password == "") {
       erroMessage("Please enter password");
