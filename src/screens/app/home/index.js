@@ -17,12 +17,17 @@ export default function Home({ navigation, route }) {
       .then((response) => response.json())
       .then((data) => setWeatherData(data))
       .catch((error) => console.error(error));
-    tempChange();
   }, []);
+  useEffect(() => {
+    tempChange();
+    // console.log("called====", temperature);
+  }, [temperature]);
   const tempChange = () => {
-    let Celsius = weatherData?.main?.temp - 273.15;
-    // console.log("=========================", parseInt(Celsius));
-    setTemperature(parseInt(Celsius));
+    setTimeout(() => {
+      let Celsius = weatherData?.main?.temp - 273.15;
+      // console.log("=========================", parseInt(Celsius));
+      setTemperature(parseInt(Celsius));
+    }, 1000);
   };
   // console.log("=========================", weatherData);
   return (
@@ -45,9 +50,14 @@ export default function Home({ navigation, route }) {
         </View>
         <View style={styles.timeAndDateContainer}>
           <SVGIcon.cloud />
-          <Text style={styles.tempText}>
-            {temperature} °C <SVGIcon.Refresh />
-          </Text>
+          <View style={CommonStyles.rowJustifySpaceBtw}>
+            <Text style={styles.tempText}>
+              {temperature ? temperature : "18"} °C{" "}
+            </Text>
+            <Pressable>
+              <SVGIcon.Refresh />
+            </Pressable>
+          </View>
           <View style={CommonStyles.rowJustifySpaceBtw}>
             <SVGIcon.MapMarker />
             <Text>Lohore, Pakistan</Text>
